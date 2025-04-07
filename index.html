@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Portföyüm</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Favicon Ekle (Örnek Yorumlu - Kendi ikon dosyanı oluşturup adını değiştir) -->
+    <!-- <link rel="icon" href="favicon.png" type="image/png"> -->
+</head>
+<body>
+    <!-- Üst Katmanlar -->
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+    <div id="joker-mask" class="joker-mask hidden"></div> <!-- Joker Maskesi Div'i -->
+
+    <!-- Ana İçerik -->
+    <div class="container">
+        <header class="profile-card animate-on-load" id="profile-info">
+            <div class="loading">Profil bilgileri yükleniyor...</div>
+            <!-- Profil içeriği JS ile gelecek -->
+        </header>
+
+        <main class="animate-on-load">
+            <h2 class="section-title">// GITHUB PROJELERİM //</h2>
+            <div id="projects-list" class="projects-grid">
+                <!-- İskelet Yükleme Göstergeleri (JS ile değiştirilecek) -->
+                <div class="skeleton-card">
+                    <div class="skeleton-line title"></div>
+                    <div class="skeleton-line text"></div>
+                    <div class="skeleton-line text short"></div>
+                    <div class="skeleton-meta">
+                        <div class="skeleton-tag"></div>
+                        <div class="skeleton-tag"></div>
+                        <div class="skeleton-tag"></div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                     <div class="skeleton-line title"></div>
+                    <div class="skeleton-line text"></div>
+                    <div class="skeleton-line text short"></div>
+                    <div class="skeleton-meta">
+                        <div class="skeleton-tag"></div>
+                        <div class="skeleton-tag"></div>
+                        <div class="skeleton-tag"></div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                     <div class="skeleton-line title"></div>
+                    <div class="skeleton-line text"></div>
+                    <div class="skeleton-line text short"></div>
+                    <div class="skeleton-meta">
+                        <div class="skeleton-tag"></div>
+                        <div class="skeleton-tag"></div>
+                        <div class="skeleton-tag"></div>
+                    </div>
+                </div>
+                 <div class="skeleton-card">
+                     <div class="skeleton-line title"></div>
+                    <div class="skeleton-line text"></div>
+                    <div class="skeleton-line text short"></div>
+                    <div class="skeleton-meta">
+                        <div class="skeleton-tag"></div>
+                        <div class="skeleton-tag"></div>
+                        <div class="skeleton-tag"></div>
+                    </div>
+                </div>
+                 <!-- Daha fazla iskelet kartı eklenebilir -->
+            </div>
+        </main>
+
+        <footer class="animate-on-load">
+            <p>Persona 5 Temalı Portföy | GitHub Pages ile güçlendirilmiştir.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
