@@ -3,79 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Portföyüm</title>
+    <title>Dedektif Pati ile Tarihi Keşfet</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Favicon Ekle (Örnek Yorumlu - Kendi ikon dosyanı oluşturup adını değiştir) -->
-    <!-- <link rel="icon" href="favicon.png" type="image/png"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Fredoka+One&display=swap" rel="stylesheet">
+    <!-- İkonlar için Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Not: Font Awesome CDN linkini güncelledim. Bu, ikonların doğru çalışması için önemli olabilir. -->
 </head>
 <body>
-    <!-- Üst Katmanlar -->
-    <div class="scanlines"></div>
-    <div class="noise"></div>
-    <div id="joker-mask" class="joker-mask hidden"></div> <!-- Joker Maskesi Div'i -->
 
-    <!-- Ana İçerik -->
-    <div class="container">
-        <header class="profile-card animate-on-load" id="profile-info">
-            <div class="loading">Profil bilgileri yükleniyor...</div>
-            <!-- Profil içeriği JS ile gelecek -->
-        </header>
-
-        <main class="animate-on-load">
-            <h2 class="section-title">// GITHUB PROJELERİM //</h2>
-            <div id="projects-list" class="projects-grid">
-                <!-- İskelet Yükleme Göstergeleri (JS ile değiştirilecek) -->
-                <div class="skeleton-card">
-                    <div class="skeleton-line title"></div>
-                    <div class="skeleton-line text"></div>
-                    <div class="skeleton-line text short"></div>
-                    <div class="skeleton-meta">
-                        <div class="skeleton-tag"></div>
-                        <div class="skeleton-tag"></div>
-                        <div class="skeleton-tag"></div>
-                    </div>
-                </div>
-                <div class="skeleton-card">
-                     <div class="skeleton-line title"></div>
-                    <div class="skeleton-line text"></div>
-                    <div class="skeleton-line text short"></div>
-                    <div class="skeleton-meta">
-                        <div class="skeleton-tag"></div>
-                        <div class="skeleton-tag"></div>
-                        <div class="skeleton-tag"></div>
-                    </div>
-                </div>
-                <div class="skeleton-card">
-                     <div class="skeleton-line title"></div>
-                    <div class="skeleton-line text"></div>
-                    <div class="skeleton-line text short"></div>
-                    <div class="skeleton-meta">
-                        <div class="skeleton-tag"></div>
-                        <div class="skeleton-tag"></div>
-                        <div class="skeleton-tag"></div>
-                    </div>
-                </div>
-                 <div class="skeleton-card">
-                     <div class="skeleton-line title"></div>
-                    <div class="skeleton-line text"></div>
-                    <div class="skeleton-line text short"></div>
-                    <div class="skeleton-meta">
-                        <div class="skeleton-tag"></div>
-                        <div class="skeleton-tag"></div>
-                        <div class="skeleton-tag"></div>
-                    </div>
-                </div>
-                 <!-- Daha fazla iskelet kartı eklenebilir -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <!-- GERÇEK İKONUNUZU BURAYA EKLEYİN, örn: <img src="images/pati-icon.png" alt="Dedektif Pati İkon" class="logo-icon"> -->
+                <img src="icon.png" alt="Dedektif Pati İkon" class="logo-icon">
+                <a href="#">Dedektif Pati</a>
             </div>
-        </main>
+            <nav>
+                <ul>
+                    <li><a href="#oyun-nedir">Oyun Nedir?</a></li>
+                    <li><a href="#nasil-oynanir">Nasıl Oynanır?</a></li>
+                    <li><a href="#ozellikler">Özellikler</a></li>
+                    <li><a href="#indir" class="nav-cta">İndir</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-        <footer class="animate-on-load">
-            <p>Persona 5 Temalı Portföy | GitHub Pages ile güçlendirilmiştir.</p>
-        </footer>
-    </div>
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h2>Dedektif Pati ile Dünyayı Keşfetmeye Hazır Mısın?</h2>
+                <p>Artırılmış Gerçeklikle tarihi yapıları evinde canlandır, eğlenerek öğren!</p>
+                <!-- GÖRSEL GELECEK: Oyun Afişi / Çekici Sahne, örn: <img src="images/hero-banner.jpg" alt="Oyun Afişi" class="hero-banner"> -->
+                <img src="afiş.png" alt="Oyun Afişi" class="hero-banner">
+                <a href="#indir" class="cta-button">Hemen İNDİR (APK)</a>
+            </div>
+        </section>
+
+        <section id="oyun-nedir" class="content-section">
+            <div class="container">
+                <h3>Minik Kaşifler İçin Tarih Macerası!</h3>
+                <div class="section-content-split">
+                    <div class="text-content">
+                        <p>"Dedektif Pati ile Tarihi Keşfet", meraklı çocuklar için tasarlanmış, Artırılmış Gerçeklik (AR) teknolojisiyle tarihi ve kültürü eğlenceli bir maceraya dönüştüren mobil bir oyundur. Sevimli dedektifimiz Pati ile dünyaca ünlü tarihi mekanlarda gizemli kayıp parçaların peşine düş, ipuçlarını topla ve her yapının sırrını keşfederken yepyeni bilgiler öğren.</p>
+                    </div>
+                    <div class="image-content">
+                        <!-- GÖRSEL GELECEK: Dünya Haritası veya Pati Pozları, örn: <img src="images/world-map.png" alt="Dünya Haritası"> -->
+                        <img src="harita.png" alt="Dünya Haritası">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="neden-bu-oyun" class="content-section alt-bg">
+            <div class="container">
+                <h3>Öğrenmek Hiç Bu Kadar Eğlenceli Olmamıştı!</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="fas fa-book-open benefit-icon"></i>
+                        <h4>Eğitici Değer</h4>
+                        <p>Tarihi eğlenceyle buluşturur, merak uyandırır.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-puzzle-piece benefit-icon"></i>
+                        <h4>Çocuk Gelişimine Katkı</h4>
+                        <p>Gözlem, problem çözme ve genel kültürü geliştirir.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-vr-cardboard benefit-icon"></i>
+                        <h4>AR Deneyimi</h4>
+                        <p>Teknolojiyi eğitici bir araç olarak kullanır.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-plane benefit-icon"></i>
+                        <h4>Çevrimdışı Oynanabilirlik</h4>
+                        <p>Seyahatlerde ve internetsiz ortamlarda ideal.</p>
+                    </div>
+                </div>
+                 <!-- GÖRSEL GELECEK: Gülen çocuk illüstrasyonları -->
+            </div>
+        </section>
+
+        <section id="nasil-oynanir" class="content-section">
+            <div class="container">
+                <h3>Maceraya Atılmak Çok Kolay!</h3>
+                <div class="how-to-play-cards">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-map-marked-alt"></i></div>
+                        <h5>1. MEKAN SEÇ!</h5>
+                        <p>Keşfetmek istediğin tarihi yapıyı ana menüden seç.</p>
+                         <!-- GÖRSEL GELECEK: Menü ekran görüntüsü/ikonu -->
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-mobile-alt"></i> <i class="fas fa-cube"></i></div>
+                        <h5>2. YERLEŞTİR!</h5>
+                        <p>Telefonunla bir yüzeye dokun ve yapıyı AR ile canlandır.</p>
+                         <!-- GÖRSEL GELECEK: Telefon ve AR model konsepti -->
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-hand-pointer"></i></div>
+                        <h5>3. KEŞFET!</h5>
+                        <p>Modelin etrafında sanal kontrollerle gezin.</p>
+                         <!-- GÖRSEL GELECEK: Kontrol ikonu -->
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-search-location"></i></div>
+                        <h5>4. BUL!</h5>
+                        <p>Dedektif Pati'nin ipuçlarıyla kayıp parçaları bul.</p>
+                         <!-- GÖRSEL GELECEK: Büyüteç veya parça ikonu -->
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h5>5. ÖĞREN!</h5>
+                        <p>Her keşifle yeni tarihi bilgiler ve 'fun fact'ler öğren.</p>
+                         <!-- GÖRSEL GELECEK: Bilgi kartı UI/ikonu -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ozellikler" class="content-section alt-bg">
+            <div class="container">
+                <h3>Pati'nin Çantasındaki Harikalar!</h3>
+                <ul class="features-list">
+                    <li><i class="fas fa-magic"></i> Artırılmış Gerçeklik Deneyimi</li>
+                    <li><i class="fas fa-smile-beam"></i> Eğitici ve Eğlenceli İçerik</li>
+                    <li><i class="fas fa-signal-slash"></i> Çevrimdışı Oynanabilirlik</li>
+                    <li><i class="fas fa-paw"></i> Sevimli Rehber Karakter</li>
+                    <li><i class="fas fa-child"></i> Çocuk Dostu Arayüz</li>
+                    <li><i class="fas fa-globe-europe"></i> Giderek Artan Tarihi Mekan Kütüphanesi</li>
+                </ul>
+                 <!-- GÖRSEL GELECEK: Çekici ikonlar -->
+            </div>
+        </section>
+
+        <section id="indir" class="download-section">
+            <div class="container">
+                <h3>Maceraya Katılmaya Ne Dersin?</h3>
+                <p>Dedektif Pati ile Tarihi Keşfet'i hemen indir, eğlence dolu bir öğrenme yolculuğuna çık!</p>
+                <!-- GÖRSEL GELECEK: Telefon mockup, örn: <img src="images/phone-mockup.png" alt="Telefon Mockup" class="download-mockup"> -->
+                <img src="https://via.placeholder.com/300x200?text=Telefon+Mockup" alt="Telefon Mockup" class="download-mockup">
+                <a href="LINK_TO_YOUR_APK_FILE.apk" class="cta-button large-cta" download>
+                    <i class="fab fa-android"></i> Hemen İNDİR (Android APK)
+                </a>
+                <div class="apk-info">
+                    <p><strong>Kurulum Bilgisi:</strong> APK dosyasını yüklemek için telefonunuzun Ayarlar > Güvenlik (veya Uygulamalar) menüsünden "Bilinmeyen kaynaklardan yüklemeye izin ver" seçeneğini etkinleştirmeniz gerekebilir.</p>
+                    <p><strong>Minimum Gereksinimler:</strong> Android 7.0 (Nougat) veya üzeri, ARCore desteği.</p>
+                    <p><strong>Dosya Boyutu:</strong> XX MB </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="iletisim" class="contact-section">
+            <div class="container">
+                <h3>Fikirlerin Bizim İçin Değerli!</h3>
+                <p>Oyunumuzla ilgili her türlü soru, öneri ve geri bildirimleriniz için bize yazmaktan çekinmeyin.</p>
+                <a href="mailto:merhaba@dedektifpati.com" class="email-link">merhaba@dedektifpati.com</a>
+                <div class="social-links">
+                    <!-- <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> -->
+                    <!-- <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                    <!-- <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+       <footer>
+        <div class="container footer-content">
+            <p>© 2025 Dedektif Pati . Tüm hakları saklıdır.</p>
+            <div class="footer-social-links">
+                <a href="https://github.com/Adil-Can-Kural/DetactiveAR" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="port.html" target="_blank" rel="noopener noreferrer" aria-label="Portfolyom"> 
+                    <i class="fas fa-briefcase"></i> 
+                </a>
+                <!-- Başka sosyal medya linkleri buraya eklenebilir -->
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

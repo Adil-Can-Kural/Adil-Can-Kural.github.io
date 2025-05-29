@@ -1,273 +1,451 @@
-/* Genel Sıfırlamalar ve Temel Ayarlar */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-/* Persona 5 Renkleri */
+/* Temel Stiller ve Renk Paleti */
 :root {
-    --p5-red: #e4002b;
-    --p5-black: #000000;
-    --p5-white: #ffffff;
-    --p5-grey: #a0a0a0;
-    --darker-grey: #2a2a2a;
-    --base-bg: #111111;
+    --primary-color: #FF8C42; /* Canlı turuncu */
+    --secondary-color: #69CDEB; /* Açık mavi */
+    --accent-color: #A5D6A7; /* Yumuşak yeşil */
+    --bg-color: #FFF9E6; /* Bej/Krem zemin */
+    --bg-alt-color: #F0F8FF; /* Açık pastel mavi - alternatif bölüm zemini */
+    --text-color: #4A4A4A; /* Koyu gri */
+    --heading-font: 'Fredoka One', cursive;
+    --body-font: 'Nunito', sans-serif;
+    --border-radius: 12px;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* Body ve Temel Arka Plan */
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--base-bg);
-    color: #f0f0f0;
+    font-family: var(--body-font);
+    color: var(--text-color);
+    background-color: var(--bg-color);
     line-height: 1.6;
-    overflow-x: hidden;
-    position: relative;
-    z-index: 0;
-    cursor: default;
+    display: flex; /* Footer'ı sayfa sonuna itmek için */
+    flex-direction: column; /* Ana içerik ve footer alt alta */
+    min-height: 100vh; /* Sayfanın en az ekran yüksekliğinde olmasını sağlar */
 }
 
-/* Soluk Köşegen Arka Plan Katmanı */
-body::before {
-    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient( 135deg, var(--p5-red) 0%, var(--p5-red) 50%, var(--darker-grey) 50.1%, var(--darker-grey) 100% );
-    opacity: 0.3;
-    z-index: -2; pointer-events: none;
+main {
+    flex-grow: 1; /* Ana içeriğin kalan boşluğu doldurmasını sağlar */
 }
 
-
-/* Ortalanmış Logo */
-body::after {
-    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('clipart3480480.png'); /* SENİN LOGON */
-    background-repeat: no-repeat; background-size: 380px 380px;
-    background-position: center center; opacity: 0.45;
-    z-index: -1; pointer-events: none;
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+    margin-bottom: 0.8em;
+    line-height: 1.2;
+}
+h2 { font-size: 2.5rem; text-align: center; }
+h3 { font-size: 2rem; text-align: center; margin-bottom: 1.5em;}
+h4 { font-size: 1.3rem; color: var(--secondary-color);}
+h5 { font-size: 1.1rem; color: var(--primary-color); }
 
-/* Gürültü (Noise) Efekti Katmanı */
-.noise {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-image: linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02)),
-                      linear-gradient(-45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02));
-    background-size: 3px 3px; opacity: 0.5;
-    z-index: 998; pointer-events: none;
+p {
+    margin-bottom: 1em;
 }
 
-/* Scanlines (En üstte) - Daha dinamik */
-.scanlines {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient( to bottom, rgba(26, 26, 26, 0) 0%, rgba(26, 26, 26, 0.5) 50%, rgba(26, 26, 26, 0) 100% );
-    background-size: 100% 4px; opacity: 0.08; pointer-events: none;
-    z-index: 999;
-    animation: scan 10s linear infinite, flicker 8s ease-in-out infinite alternate;
+a {
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
-@keyframes scan { 0% { background-position: 0 0; } 100% { background-position: 0 200%; } }
-@keyframes flicker { 0%, 100% { opacity: 0.08; } 50% { opacity: 0.05; } }
-
-/* Ana İçerik Konteyneri */
-.container { max-width: 960px; margin: 40px auto; padding: 20px; position: relative; z-index: 1; }
-
-/* Yüklenme Animasyonu */
-.animate-on-load {
-    opacity: 0; transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
-.animate-on-load.visible { opacity: 1; transform: translateY(0); }
-/* Proje kartları için geçişler .project-card içinde tanımlı */
 
+/* Header */
+#header {
+    background-color: #ffffff;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    flex-shrink: 0; /* Header'ın küçülmemesi için */
+}
 
-/* Başlıklar */
-h1, h2 { font-family: 'Anton', sans-serif; text-transform: uppercase; color: var(--p5-red); margin-bottom: 20px; text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7); letter-spacing: 1px; }
-.section-title { border-bottom: 3px solid var(--p5-red); display: inline-block; padding-bottom: 5px; margin-top: 40px; transform: skew(-10deg); background-color: rgba(0, 0, 0, 0.5); padding: 5px 15px; color: var(--p5-white); text-shadow: 1px 1px 2px var(--p5-black); position: relative; }
-.section-title::before { content: "// "; opacity: 0.7; }
-.section-title::after { content: " //"; opacity: 0.7; }
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-/* Bağlantılar */
-a { color: var(--p5-red); text-decoration: none; transition: color 0.3s ease, transform 0.2s ease; }
-a:hover { color: var(--p5-white); text-decoration: underline; transform: scale(1.05); }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-/* Profil Kartı */
-.profile-card { background-color: rgba(0, 0, 0, 0.8); padding: 30px; margin-bottom: 40px; text-align: center; border: 2px solid var(--p5-red); position: relative; overflow: hidden; clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%); box-shadow: 0 6px 20px 1px rgba(228, 0, 43, 0.45); min-height: 200px; }
-.profile-card::before { content: ''; position: absolute; top: -10px; left: -10px; width: 50px; height: 50px; background: var(--p5-red); transform: rotate(45deg); z-index: 0; }
-.profile-card > *:not(.loading) { position: relative; z-index: 1; }
-.profile-avatar { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--p5-red); margin-bottom: 20px; box-shadow: 0 0 20px var(--p5-red); transition: transform 0.3s ease; background-color: #333; }
-.profile-avatar:hover { transform: scale(1.1) rotate(5deg); }
-.profile-card h1 { color: var(--p5-white); margin-bottom: 10px; }
-.profile-card p { color: var(--p5-grey); margin-bottom: 15px; max-width: 600px; margin-left: auto; margin-right: auto; }
-.profile-link { display: inline-block; background-color: var(--p5-red); color: var(--p5-white); padding: 10px 25px; border-radius: 5px; font-weight: bold; text-transform: uppercase; transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; box-shadow: 0 4px 10px rgba(228, 0, 43, 0.4); margin-top: 10px; }
-.profile-link:hover { background-color: var(--p5-white); color: var(--p5-red); text-decoration: none; transform: translateY(-2px) scale(1.05); box-shadow: 0 6px 15px rgba(228, 0, 43, 0.6); }
+.logo-icon {
+    height: 38px;
+    width: auto;
+}
 
-/* Proje Listesi */
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.logo a {
+    font-family: var(--heading-font);
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    line-height: 1;
+}
 
-/* --- Proje Kartı --- */
-.project-card {
-    background-color: rgba(0, 0, 0, 0.85);
-    border: 1px solid #444;
+#header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+#header nav ul li a {
+    font-weight: 700;
+    color: var(--text-color);
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#header nav ul li a:hover,
+#header nav ul li a.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+#header nav ul li a.nav-cta {
+    background-color: var(--secondary-color);
+    color: white;
+}
+#header nav ul li a.nav-cta:hover {
+    background-color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero-section {
+    background-image: linear-gradient(to bottom, rgba(255, 249, 230, 0.8), var(--bg-color)); /* Placeholder arka planı kaldırdım */
+    background-size: cover;
+    background-position: center;
+    padding: 60px 0; /* Biraz azalttım */
+    text-align: center;
+    color: var(--text-color);
+}
+.hero-section h2 {
+    font-size: 2.8rem; /* Biraz ayarladım */
+    margin-bottom: 0.5em;
+    color: var(--primary-color);
+}
+.hero-section p {
+    font-size: 1.2rem; /* Biraz ayarladım */
+    margin-bottom: 1.5em;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hero-banner {
+    margin: 25px auto; /* Biraz ayarladım */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 700px; /* Afişin çok büyümesini engelle */
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    transition: transform 0.2s ease-out, background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.cta-button:hover {
+    background-color: #E67E22;
+    transform: translateY(-3px);
+}
+
+/* Content Sections */
+.content-section {
+    padding: 50px 0; /* Biraz azalttım */
+}
+.alt-bg {
+    background-color: var(--bg-alt-color);
+}
+
+.section-content-split {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px; /* Biraz azalttım */
+}
+.section-content-split .text-content,
+.section-content-split .image-content {
+    flex: 1;
+    min-width: 280px; /* Biraz ayarladım */
+}
+.section-content-split .image-content img {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+/* Neden Bu Oyun? (Benefits) */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Biraz ayarladım */
+    gap: 25px; /* Biraz azalttım */
+    margin-top: 30px; /* Biraz azalttım */
+}
+.benefit-item {
+    background-color: white;
+    padding: 20px; /* Biraz azalttım */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: transform 0.3s;
+}
+.benefit-item:hover {
+    transform: translateY(-5px);
+}
+.benefit-icon {
+    font-size: 2.2rem; /* Biraz azalttım */
+    color: var(--accent-color);
+    margin-bottom: 12px; /* Biraz azalttım */
+}
+
+/* Nasıl Oynanır? (Cards) */
+.how-to-play-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Biraz ayarladım */
+    gap: 20px; /* Biraz azalttım */
+    margin-top: 30px; /* Biraz azalttım */
+}
+.card {
+    background-color: #fff;
     padding: 20px;
-    position: relative;
-    overflow: hidden; /* Glitch animasyonunda taşmaları engellemek için önemli */
-    border-left: 5px solid var(--p5-red);
-    opacity: 0; /* Başlangıçta yüklenme animasyonu için */
-    transform: translateY(15px); /* Başlangıçta yüklenme animasyonu için */
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: scale(1.03);
+}
+.card-icon {
+    font-size: 2.2rem; /* Biraz azalttım */
+    color: var(--secondary-color);
+    margin-bottom: 12px; /* Biraz azalttım */
+}
+.card-icon .fa-cube { margin-left: -10px; }
 
-    /* Kartın kendi normal durum ve hover geçişleri */
-    transition: opacity 0.5s ease-out 0.2s, /* Yüklenme opacity geçişi */
-                transform 0.4s ease-out,      /* Hover transform geçişi */
-                box-shadow 0.4s ease-out,   /* Hover shadow geçişi */
-                border-color 0.3s ease;    /* Hover border geçişi (tüm kenarlar için) */
-    /* DİKKAT: border-left-color için ayrı geçiş tanımı GEREKMEZ,
-       çünkü animasyonda border-left-color kullanacağız ve animasyon bitince
-       normal değere dönecek. İsterseniz ekleyebilirsiniz:
-       border-left-color 0.3s ease;
-    */
+/* Özellikler */
+.features-list {
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Biraz ayarladım */
+    gap: 15px; /* Biraz azalttım */
+    margin-top: 25px; /* Biraz azalttım */
+}
+.features-list li {
+    background-color: white;
+    padding: 12px 18px; /* Biraz ayarladım */
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Biraz ayarladım */
+    font-size: 1rem; /* Biraz ayarladım */
+}
+.features-list li i {
+    color: var(--primary-color);
+    font-size: 1.4rem; /* Biraz ayarladım */
+    width: 28px; /* Biraz ayarladım */
+    text-align: center;
 }
 
-/* Proje kartları yüklendiğinde opacity ve transform sıfırlanır (geçişle) */
-.animate-on-load.projects-grid-loaded .project-card {
-     opacity: 1;
-     transform: translateY(0);
+/* İndirme Bölümü */
+.download-section {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 60px 0; /* Biraz ayarladım */
+    text-align: center;
 }
-.animate-on-load.projects-grid-loaded .project-card:nth-child(2) { transition-delay: 0.3s; }
-.animate-on-load.projects-grid-loaded .project-card:nth-child(3) { transition-delay: 0.4s; }
-/* ... */
+.download-section h3 {
+    color: white;
+    font-size: 2rem; /* Biraz ayarladım */
+}
+.download-section p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.download-mockup {
+    margin: 25px auto; /* Biraz ayarladım */
+    max-width: 250px;
+}
+.large-cta {
+    padding: 15px 40px; /* Biraz ayarladım */
+    font-size: 1.2rem; /* Biraz ayarladım */
+    margin-top: 20px;
+    margin-bottom: 25px; /* Biraz ayarladım */
+    background-color: var(--secondary-color);
+    border: 2px solid white;
+}
+.large-cta:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.large-cta i {
+    margin-right: 10px;
+}
+.apk-info {
+    background-color: rgba(255,255,255,0.15);
+    padding: 18px; /* Biraz ayarladım */
+    border-radius: var(--border-radius);
+    max-width: 600px;
+    margin: 20px auto 0 auto;
+    text-align: left;
+    font-size: 0.85rem; /* Biraz ayarladım */
+}
+.apk-info p { margin-bottom: 0.5em; }
 
-
-/* Yıldız Motifi */
-.project-card::after {
-    content: '★'; position: absolute; top: 8px; right: 8px; font-size: 0.9em;
-    color: var(--p5-red); opacity: 0.3; transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 1; /* Metnin üzerine çıkabilir, gerekirse 0 yapın */
+/* İletişim */
+.contact-section {
+    padding: 50px 0; /* Biraz ayarladım */
+    text-align: center;
+}
+.email-link {
+    font-size: 1.2rem; /* Biraz ayarladım */
+    font-weight: bold;
+    display: block;
+    margin: 18px 0; /* Biraz ayarladım */
+    color: var(--secondary-color);
+}
+.email-link:hover {
+    text-decoration: underline;
 }
 
-/* --- Hover Durumu --- */
-.card-hovered {
-    box-shadow: 0 10px 30px 3px rgba(228, 0, 43, 0.65);
-    border-color: var(--p5-white); /* Hover'da tüm kenarlıklar beyaza döner */
-    transform: translateY(-8px);
+/* Footer */
+footer {
+    background-color: #333;
+    color: #f4f4f4;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    margin-top: auto; /* Footer'ı sayfanın en altına iter (body flex ile birlikte) */
+    flex-shrink: 0; /* Footer'ın küçülmemesi için */
+    width: 100%; /* Tam genişlik kaplaması için */
 }
-.card-hovered::after { /* Yıldız için hover durumu */
-    opacity: 0.8;
-    transform: rotate(360deg);
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px; /* Mobil için telif ve linkler arası dikey boşluk */
 }
 
+.footer-social-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Mobilde sığmazsa alt satıra kaysın */
+    justify-content: center; /* Mobilde ortalansın */
+}
 
-/* --- Glitch Efekti (YENİ - Daha Güvenilir) --- */
+.footer-social-links a {
+    color: #f4f4f4;
+    margin: 5px 12px; /* Mobil ve masaüstü için linkler arası boşluk */
+    transition: color 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px; /* İkon ve "Portföyüm" gibi metinler arası boşluk */
+    font-size: 0.9rem; /* "Portföyüm" gibi metinlerin boyutu (telif ile aynı) */
+}
 
-/* Eski/Basit animasyonlar kaldırıldı/yorumlandı */
-/* @keyframes simple-pulse { ... } */
+.footer-social-links a i {
+    font-size: 1.8rem; /* Hem mobil hem masaüstü için ikon boyutu (önceki denememiz) */
+}
 
-/* YENİ Glitch Animasyon Tanımı */
-@keyframes new-glitch {
-    0%, 100% {
-        /* Başlangıç ve Bitiş: Tamamen normal durum */
-        transform: translateX(0) rotateZ(0);
-        opacity: 1;
-        border-left-color: var(--p5-red); /* Kartın normal sol kenarlık rengi */
-        /* text-shadow animasyonu içeriğe uygulansa daha iyi olabilir ama deneme amaçlı burada */
-        /* Eğer kart içindeki H3 için isterseniz bu satırı silip H3'e uygulayın */
-         /* text-shadow: none; */
-        background-color: rgba(0, 0, 0, 0.85); /* Kartın normal arkaplan rengi */
+.footer-social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Duyarlılık Ayarları */
+@media (max-width: 767px) { /* 768px'den KÜÇÜK ekranlar */
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
     }
-    20% {
-        /* Hafif sola kayma, cyan sol kenarlık */
-        transform: translateX(-4px) rotateZ(-0.5deg);
-        border-left-color: cyan;
+    .logo {
+        justify-content: center;
     }
-    40% {
-        /* Sağa kayma, opacity düşüşü */
-        transform: translateX(4px) rotateZ(0deg);
-        opacity: 0.8;
+    #header nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
     }
-    60% {
-        /* Hafif yukarı, lime sol kenarlık, hafif arkaplan */
-        transform: translateY(-2px) rotateZ(0.5deg);
-        border-left-color: lime;
-        background-color: rgba(40, 40, 40, 0.9); /* Hafif grileşme */
+    #header nav ul li a {
+        padding: 6px 10px;
+        font-size: 0.9rem;
     }
-    80% {
-        /* Normale dönüş, son bir opacity ve sol kenarlık titremesi */
-        transform: translateX(1px) rotateZ(0);
-        opacity: 0.9;
-        border-left-color: yellow;
-        background-color: rgba(0, 0, 0, 0.85); /* Normale dönüş */
+
+    .hero-section h2 { font-size: 2rem; } /* Daha küçük */
+    .hero-section p { font-size: 1.1rem; } /* Daha küçük */
+    
+    .section-content-split { flex-direction: column; }
+    .section-content-split .text-content,
+    .section-content-split .image-content { text-align: center; }
+    .section-content-split .image-content img { margin: 0 auto; }
+
+    h2 { font-size: 1.8rem; } /* Genel başlıklar */
+    h3 { font-size: 1.6rem; } /* Bölüm başlıkları */
+
+    .how-to-play-cards { grid-template-columns: 1fr; }
+    .features-list { grid-template-columns: 1fr; }
+
+    /* Footer için özel mobil ayarına pek gerek kalmadı, yukarıdaki genel tanımlar iyi çalışmalı */
+    /* .footer-social-links a i { font-size: 1.7rem; } İsterseniz mobilde biraz daha küçültebilirsiniz */
+}
+
+/* Tablet ve Masaüstü (Daha büyük ekranlar) */
+@media (min-width: 768px) {
+    .footer-content {
+        display: grid; /* Flex yerine Grid kullanalım */
+        grid-template-columns: 1fr auto 1fr; /* Ortadaki sütun içeriğe göre, kenarlar boşluğu paylaşır */
+        align-items: center;
+        width: 100%; /* Container'ı tam kaplasın */
     }
-}
 
-/* Glitch sınıfı (Yeni animasyonu kullanır) */
-.is-glitching {
-    /* YENİ ANİMASYON KULLANILIR */
-    /* Süreyi ayarlayabilirsiniz */
-    animation: new-glitch 0.35s linear 1;
+    .footer-content p { /* Telif hakkı yazısı */
+        grid-column: 2 / 3; /* Ortadaki sütuna yerleşsin */
+        text-align: center; /* Kendi içinde ortalansın */
+        margin: 0; /* Ekstra marginleri sıfırla */
+    }
 
-    pointer-events: none; /* Tıklamayı engellemek için kalmalı */
-    /* Not: Arkaplan ve border-left-color animasyon içinde değiştiği için
-       burada tekrar tanımlamaya genellikle gerek yok. */
-}
+    .footer-social-links {
+        grid-column: 3 / 4; /* Sağdaki sütuna yerleşsin */
+        justify-self: end; /* Kendi sütununda sağa yaslansın */
+        flex-wrap: nowrap;
+    }
 
-/* Opsiyonel: Glitch sırasında H3'ün text-shadow'u değişsin */
-/* .is-glitching h3 {
-    animation: glitch-text-shadow 0.35s linear 1;
-}
-
-@keyframes glitch-text-shadow {
-    0%, 100% { text-shadow: none; }
-    25% { text-shadow: 1px 0 blue; }
-    50% { text-shadow: -1px 0 red; }
-    75% { text-shadow: 1px 0 lime; }
-} */
-
-
-/* --- Kart İçeriği --- */
-.project-card h3 {
-    color: var(--p5-white); margin-bottom: 10px; font-family: 'Anton', sans-serif;
-    text-transform: uppercase; letter-spacing: 0.5px; word-break: break-all;
-    position: relative; /* Text-shadow animasyonu için gerekebilir */
-    z-index: 2; /* Yıldızın önünde kalması için */
-}
-.project-card h3 a:hover { color: var(--p5-red); text-decoration: none; }
-.project-card p { color: var(--p5-grey); font-size: 0.9em; margin-bottom: 15px; min-height: 40px; position: relative; z-index: 2; }
-.project-meta span { font-size: 0.8em; color: #888; margin-right: 10px; margin-bottom: 5px; display: inline-block; background: rgba(255, 255, 255, 0.1); padding: 2px 6px; border-radius: 3px; position: relative; z-index: 2;}
-
-/* --- İskelet Yükleme --- */
-.skeleton-card { background-color: rgba(30, 30, 30, 0.7); border: 1px solid #444; padding: 20px; border-left: 5px solid var(--p5-grey); min-height: 180px; position: relative; overflow: hidden; }
-.skeleton-line { background-color: #444; height: 1.2em; margin-bottom: 10px; border-radius: 3px; }
-.skeleton-line.title { width: 60%; height: 1.5em; margin-bottom: 15px; background-color: #555;}
-.skeleton-line.text { width: 90%; }
-.skeleton-line.text.short { width: 75%; }
-.skeleton-meta { display: flex; gap: 10px; margin-top: 20px; }
-.skeleton-tag { background-color: #444; height: 20px; width: 60px; border-radius: 3px; }
-.skeleton-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent); animation: shimmer 1.8s infinite linear; }
-@keyframes shimmer { 0% { left: -100%; } 100% { left: 100%; } }
-
-
-/* --- Diğerleri --- */
-.loading { text-align: center; padding: 30px; font-size: 1.2em; color: var(--p5-grey); font-family: 'Anton', sans-serif; text-transform: uppercase; }
-.error { color: var(--p5-red); background-color: rgba(228, 0, 43, 0.1); padding: 10px; border: 1px solid var(--p5-red); text-align: center; margin-top: 15px; }
-footer { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px dashed #444; color: var(--p5-grey); font-size: 0.9em; }
-
-/* Joker Maskesi */
-.joker-mask {
-    position: fixed; width: 50px; height: 50px;
-    background-image: url('520-5204737_persona-5-mask-png-transparent-persona-5-png.png'); /* KENDİ MASK RESMİNİ KULLAN! */
-    background-size: contain; background-repeat: no-repeat; background-position: center;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.5s ease-in-out;
-    z-index: 1000; transform: translate(-50%, -50%); will-change: top, left, opacity;
-}
-.joker-mask.visible { opacity: 0.85; }
-.joker-mask.hidden { opacity: 0; }
-
-
-/* Duyarlılık */
-@media (max-width: 768px) {
-    .container { margin: 20px auto; padding: 15px; }
-    body::before { opacity: 0.3; }
-    body::after { background-size: 280px 280px; opacity: 0.40; }
-    .profile-card { clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 97%); padding: 20px; }
-    .profile-avatar { width: 100px; height: 100px; }
-    .section-title { transform: skew(0deg); font-size: 1.5em; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .skeleton-card { min-height: 160px; }
-    .joker-mask { width: 40px; height: 40px; }
+     .footer-social-links a {
+        margin: 0 10px; /* Biraz daha az boşluk ikonlar arasında */
+    }
+    /* Sol taraf boş kalacak (grid-column: 1 / 2) */
 }
